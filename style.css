@@ -1,0 +1,87 @@
+/*
+Theme Name: Pathfinder Child Theme
+Theme URI: http://underscores.me/
+Author: Flynn O\'Connor
+Author URI: http://underscores.me/
+Description: Child Theme for Atlantic Council subsites.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: atlantic-council
+Template: atlantic-council
+*/
+
+/* base styles */
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* site header & navigation */
+
+.gta-site-header {
+    padding: 0 35px;
+}
+
+.cp-logo {
+    max-width: 230px;
+}
+
+#site-nav {
+    background: #fff;
+}
+
+ul#primary-nav {
+    -webkit-box-flex: inherit;
+    flex-grow: inherit;
+    padding: 0;
+}
+
+ul#primary-nav a {
+    color: #122431;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+}
+
+.gta-site-nav--row {
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #122431;
+    padding-bottom: 20px;
+}
+
+.gta-site-nav--branding {
+    padding: 0;
+    margin-right: 40px;
+}
+
+/* site content */
+
+.site-content {
+    margin: 40px 35px;
+}
+
+.o-page--content {
+    padding: 20px 0;
+}
+
+/* typography */
+
+p {
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
