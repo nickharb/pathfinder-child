@@ -30,10 +30,6 @@ get_header(); ?>
 
                             // Add quarterly updates logic here
 
-                            // if ($composite_score_data) :
-                            //     echo $composite_score_data['url'];
-                            // endif;
-
                             echo "<div id='pathfinder-dashboard-container'></div>";
 
                             the_content();
