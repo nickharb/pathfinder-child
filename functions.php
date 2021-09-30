@@ -8,14 +8,21 @@ $page = get_page_by_path( 'dashboard' );
 $post_id = $page->ID;
 
 function my_custom_scripts() {
-    wp_enqueue_script('dashboard-js-app', get_stylesheet_directory_uri() . '/dashboard/build/bundle.js');
-    // wp_enqueue_script('dashboard-js-app', get_stylesheet_directory_uri() . '/dashboard/build/test.js');
+    wp_enqueue_script('dashboard-js-app', get_stylesheet_directory_uri() . '/dashboard/composite/bundle.js');
+    // wp_enqueue_script('dashboard-js-app', get_stylesheet_directory_uri() . '/dashboard/composite/test.js');
     wp_enqueue_style('selectr-css', get_stylesheet_directory_uri() . '/dashboard/selectr.min.css');
-    wp_enqueue_style('dashboard-css-bundle', get_stylesheet_directory_uri() . '/dashboard/build/bundle.css');
+    wp_enqueue_style('dashboard-css-bundle', get_stylesheet_directory_uri() . '/dashboard/composite/bundle.css');
 
     // pass data value into bundle.js
+    $dashboard_copy_data = get_field('dashboard_copy_data', $post_id);
     $composite_score_data = get_field('composite_score_data', $post_id);
-    wp_localize_script( "dashboard-js-app", "data_field", $composite_score_data );
+
+    $data = [
+        "copy_url" => $dashboard_copy_data['url'],
+        "data_url" => $composite_score_data['url']
+    ];
+
+    wp_localize_script( "dashboard-js-app", "data_field", $data );
 }
 add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );
 
