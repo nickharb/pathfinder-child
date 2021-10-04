@@ -48,7 +48,6 @@ function dashboard_scripts() {
     $fdi_data = get_field('fdi_data', $fdi_post_id);
     $portfolio_data = get_field('portfolio_data', $portfolio_post_id);
     
-    // load style for custom dropdown menu
     wp_enqueue_style('selectr-css', get_stylesheet_directory_uri() . '/dashboard/selectr.min.css');
 
     if ( is_page( 'financial-system-development' ) ) {
@@ -61,56 +60,6 @@ function dashboard_scripts() {
         wp_enqueue_script('growth-js', get_stylesheet_directory_uri() . '/dashboard/growth/bundle.js');
         wp_enqueue_style('growth-css', get_stylesheet_directory_uri() . '/dashboard/growth/bundle.css');
         wp_localize_script( "growth-js", "data_field", $data );
-    } else if ( is_page( 'market-competition' ) ) {
-        $data = [
-            "container" => "competition-container",
-            "copy_url" => $dashboard_copy_data['url'],
-            "data_url" => $competition_data['url'],
-            "composite_url" => $composite_score_data['url']
-        ];
-        wp_enqueue_script('competition-js', get_stylesheet_directory_uri() . '/dashboard/competition/bundle.js');
-        wp_enqueue_style('competition-css', get_stylesheet_directory_uri() . '/dashboard/competition/bundle.css');
-        wp_localize_script( "competition-js", "data_field", $data );
-    } else if ( is_page( 'modern-innovation-system' ) ) {
-        $data = [
-            "container" => "innovation-container",
-            "copy_url" => $dashboard_copy_data['url'],
-            "data_url" => $innovation_data['url'],
-            "composite_url" => $composite_score_data['url']
-        ];
-        wp_enqueue_script('innovation-js', get_stylesheet_directory_uri() . '/dashboard/innovation/bundle.js');
-        wp_enqueue_style('innovation-css', get_stylesheet_directory_uri() . '/dashboard/innovation/bundle.css');
-        wp_localize_script( "innovation-js", "data_field", $data );
-    } else if ( is_page( 'trade-openness' ) ) {
-        $data = [
-            "container" => "trade-container",
-            "copy_url" => $dashboard_copy_data['url'],
-            "data_url" => $trade_data['url'],
-            "composite_url" => $composite_score_data['url']
-        ];
-        wp_enqueue_script('trade-js', get_stylesheet_directory_uri() . '/dashboard/trade/bundle.js');
-        wp_enqueue_style('trade-css', get_stylesheet_directory_uri() . '/dashboard/trade/bundle.css');
-        wp_localize_script( "trade-js", "data_field", $data );
-    } else if ( is_page( 'direct-investment-openness' ) ) {
-        $data = [
-            "container" => "fdi-container",
-            "copy_url" => $dashboard_copy_data['url'],
-            "data_url" => $fdi_data['url'],
-            "composite_url" => $composite_score_data['url']
-        ];
-        wp_enqueue_script('fdi-js', get_stylesheet_directory_uri() . '/dashboard/fdi/bundle.js');
-        wp_enqueue_style('fdi-css', get_stylesheet_directory_uri() . '/dashboard/fdi/bundle.css');
-        wp_localize_script( "fdi-js", "data_field", $data );
-    } else if ( is_page( 'portfolio-investment-openness' ) ) {
-        $data = [
-            "container" => "portfolio-container",
-            "copy_url" => $dashboard_copy_data['url'],
-            "data_url" => $portfolio_data['url'],
-            "composite_url" => $composite_score_data['url']
-        ];
-        wp_enqueue_script('portfolio-js', get_stylesheet_directory_uri() . '/dashboard/portfolio/bundle.js');
-        wp_enqueue_style('portfolio-css', get_stylesheet_directory_uri() . '/dashboard/portfolio/bundle.css');
-        wp_localize_script( "portfolio-js", "data_field", $data );
     } else {
         $data = [
             "container" => "pathfinder-dashboard-container",
@@ -121,6 +70,84 @@ function dashboard_scripts() {
         wp_enqueue_style('composite-css', get_stylesheet_directory_uri() . '/dashboard/composite/bundle.css');
         wp_localize_script( "composite-js", "data_field", $data );
     }
+
+    // if ( is_page( 'financial-system-development' ) ) {
+    //     $data = [
+    //         "container" => "growth-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $growth_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('growth-js', get_stylesheet_directory_uri() . '/dashboard/growth/bundle.js');
+    //     wp_enqueue_style('growth-css', get_stylesheet_directory_uri() . '/dashboard/growth/bundle.css');
+    //     wp_localize_script( "growth-js", "data_field", $data );
+    // } else if ( is_page( 'market-competition' ) ) {
+    //     $data = [
+    //         "container" => "competition-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $competition_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('competition-js', get_stylesheet_directory_uri() . '/dashboard/competition/bundle.js');
+    //     wp_enqueue_style('competition-css', get_stylesheet_directory_uri() . '/dashboard/competition/bundle.css');
+    //     wp_localize_script( "competition-js", "data_field", $data );
+    // } else if ( is_page( 'modern-innovation-system' ) ) {
+    //     $data = [
+    //         "container" => "innovation-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $innovation_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('innovation-js', get_stylesheet_directory_uri() . '/dashboard/innovation/bundle.js');
+    //     wp_enqueue_style('innovation-css', get_stylesheet_directory_uri() . '/dashboard/innovation/bundle.css');
+    //     wp_localize_script( "innovation-js", "data_field", $data );
+    // } else if ( is_page( 'trade-openness' ) ) {
+    //     $data = [
+    //         "container" => "trade-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $trade_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('trade-js', get_stylesheet_directory_uri() . '/dashboard/trade/bundle.js');
+    //     wp_enqueue_style('trade-css', get_stylesheet_directory_uri() . '/dashboard/trade/bundle.css');
+    //     wp_localize_script( "trade-js", "data_field", $data );
+    // } else if ( is_page( 'direct-investment-openness' ) ) {
+    //     $data = [
+    //         "container" => "fdi-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $fdi_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('fdi-js', get_stylesheet_directory_uri() . '/dashboard/fdi/bundle.js');
+    //     wp_enqueue_style('fdi-css', get_stylesheet_directory_uri() . '/dashboard/fdi/bundle.css');
+    //     wp_localize_script( "fdi-js", "data_field", $data );
+    // } else if ( is_page( 'portfolio-investment-openness' ) ) {
+    //     $data = [
+    //         "container" => "portfolio-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $portfolio_data['url'],
+    //         "composite_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('portfolio-js', get_stylesheet_directory_uri() . '/dashboard/portfolio/bundle.js');
+    //     wp_enqueue_style('portfolio-css', get_stylesheet_directory_uri() . '/dashboard/portfolio/bundle.css');
+    //     wp_localize_script( "portfolio-js", "data_field", $data );
+    // } else {
+    //     $data = [
+    //         "container" => "pathfinder-dashboard-container",
+    //         "copy_url" => $dashboard_copy_data['url'],
+    //         "data_url" => $composite_score_data['url'],
+    //         "base_url" => get_site_url()
+    //     ];
+    //     wp_enqueue_script('composite-js', get_stylesheet_directory_uri() . '/dashboard/composite/bundle.js');
+    //     wp_enqueue_style('composite-css', get_stylesheet_directory_uri() . '/dashboard/composite/bundle.css');
+    //     wp_localize_script( "composite-js", "data_field", $data );
+    // }
 }
 add_action( 'wp_enqueue_scripts', 'dashboard_scripts' );
 
